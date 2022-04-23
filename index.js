@@ -10,14 +10,21 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-// Ping pong on message
-client.on("message", msg => {
-    if (msg.content === "ping") {
-        console.log('pong');
-        msg.reply("pong");
-    }
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (commandName === 'ping') {
+		await interaction.reply('Pong!');
+	} else if (commandName === 'server') {
+		await interaction.reply('Server info.');
+	} else if (commandName === 'user') {
+		await interaction.reply('User info.');
+	}
 });
 
+client.login(token);
 
 // Login to Discord with your client's token
 client.login(token);
