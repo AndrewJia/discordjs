@@ -10,5 +10,14 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
+// Ping pong on message
+client.on("message", msg => {
+    if (msg.content === "ping") {
+        console.log('pong');
+        msg.reply("pong");
+    }
+});
+
+
 // Login to Discord with your client's token
 client.login(token);
