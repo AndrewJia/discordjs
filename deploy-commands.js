@@ -1,5 +1,6 @@
 //npm install @discordjs/builders @discordjs/rest discord-api-types
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const fs = require('node:fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 //const { clientId, guildId, token } = require('./config.json');
@@ -9,14 +10,13 @@ const clientId = process.env.CLIENTID;
 const guildId = process.env.GUILDID;
 const token = process.env.TOKEN;
 
-const commands = [
-	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
-	new SlashCommandBuilder().setName('server').setDescription('Replies with server info!'),
-	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
-	new SlashCommandBuilder().setName('poop').setDescription('Become doo doo'),
-	new SlashCommandBuilder().setName('bepis').setDescription('Bepis Mode!')
-]
-	.map(command => command.toJSON());
+const commands = []
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	commands.push(command.data.toJSON());
+}
 
 const rest = new REST({ version: '9' }).setToken(token);
 
