@@ -8,18 +8,30 @@ module.exports = {
             option
                 .setName('amount')
                 .setDescription('The Amount of Dice to Roll')
-        ),
+        )
+        .addBooleanOption(option =>
+            option
+                .setName('joingame')
+                .setDescription('Join liar\'s dice game?')),
 	async execute(interaction) {
+
+        // rolls given number of dice or default = 5
         amount = interaction.options.getInteger('amount');
         if(amount == null) {
             amount = 5;
         }
 		await interaction.user.send("Rolling "+amount+" dice");
+
+        // array to store the rolls
         const arr = Array();
         for(i = 0; i < amount; i++) {
             arr.push(getRandomInt(6))
         }
         arr.sort();
+
+        //stores array
+        global.lul.push(arr);
+
         await interaction.user.send(arr.toString());
         await interaction.reply("done");
 	},
