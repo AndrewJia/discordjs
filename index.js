@@ -1,11 +1,13 @@
 //npm install discord.js
 //npm install dotenv
+//to run: node index.js
 
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 console.log(process.env.DISCORD_TOKEN);
+const token = process.env.TOKEN;
 //const { token } = require('./config.json');
 
 // Create a new client instance
