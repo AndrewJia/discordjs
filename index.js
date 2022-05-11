@@ -27,7 +27,6 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 	global.lul = Array();
-	global.lul.push(1);
 });
 
 client.on('interactionCreate', async interaction => {

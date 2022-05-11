@@ -20,7 +20,6 @@ module.exports = {
         if(amount == null) {
             amount = 5;
         }
-		await interaction.user.send("Rolling "+amount+" dice");
 
         // array to store the rolls
         const arr = Array();
@@ -29,10 +28,11 @@ module.exports = {
         }
         arr.sort();
 
-        //stores array
+        //stores username and rolls
+        global.lul.push(interaction.user.tag);
         global.lul.push(arr);
 
-        await interaction.user.send(arr.toString());
+        await interaction.user.send("Rolling "+amount+" dice\n"+arr.toString());
         await interaction.reply("done");
 	},
 };
