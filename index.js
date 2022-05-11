@@ -7,9 +7,7 @@ const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(process.env.DISCORD_TOKEN);
 const token = process.env.TOKEN;
-//const { token } = require('./config.json');
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -40,7 +38,7 @@ client.on('interactionCreate', async interaction => {
 
 	// execute command
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction, client);
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
