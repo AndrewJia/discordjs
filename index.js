@@ -26,7 +26,12 @@ for (const file of commandFiles) {
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('Ready!');
+	//tracks usernames and rolls
 	global.rolls = Array();
+	//current bet value
+	global.betVal = 0;
+	//current bet count
+	global.betCnt = 1;		//to prevent bets of count 0
 });
 
 client.on('interactionCreate', async interaction => {

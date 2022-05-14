@@ -24,7 +24,9 @@ module.exports = {
         }
         await interaction.channel.send(countString);
 
-        //clears stored dice rolls
+        //clears stored dice rolls and bet
         global.rolls = Array();
+        global.betVal = 0;
+        global.betCnt = 1;
 	},
 };
