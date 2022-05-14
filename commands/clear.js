@@ -9,12 +9,9 @@ module.exports = {
         count = [0, 0, 0, 0, 0, 0];
         for(i = 1; i < global.rolls.length; i+=2) {
             for(j = 0; j < global.rolls[i].length; j++) {
-                //console.log(global.rolls[i][j]);
                 count[global.rolls[i][j]-1]++;
             }
         }
-
-        console.log(count);
         
         await interaction.reply("array was "+global.rolls);
 
