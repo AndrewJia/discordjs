@@ -4,16 +4,16 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('bet')
 		.setDescription('Place your bet about the dice')
-        .addIntegerOption(option => 
-            option
-                .setName('value')
-                .setDescription('Value of the bet')
-                .setRequired(true)
-        )
         .addIntegerOption(option =>
             option
                 .setName('count')
                 .setDescription('Count of the bet')
+                .setRequired(true)
+        )
+        .addIntegerOption(option => 
+            option
+                .setName('value')
+                .setDescription('Value of the bet')
                 .setRequired(true)
         ),
 	async execute(interaction) {
@@ -37,16 +37,14 @@ module.exports = {
             return;
         }
 
-        if(count == global.betCnt) {
-            if(value <= global.betVal) {
-                await interaction.reply("invalid bet: value must be greater if count is the same");
-            } else {
-                await interaction.reply("The new bet is "+count+" "+value+"'s!");
-                global.betCnt = count;
-                global.betVal = value;
-                return;
-            }
+        if(count == global.betCnt && value <= global.betVal) {
+            await interaction.reply("invalid bet: value must be greater if count is the same");
+            return;
         }
 
+        //bet is valid
+        await interaction.reply("The new bet is "+count+" "+value+"'s!");
+        global.betCnt = count;
+        global.betVal = value;
 	},
 };
