@@ -6,7 +6,7 @@ module.exports = {
 		.setDescription('dms the user'),
 	async execute(interaction) {
 		await interaction.user.send("yo");
-        await interaction.user.send(global.lul.toString());
+		await interaction.channel.send("omg second message");
         await interaction.reply("done");
 	},
 };
