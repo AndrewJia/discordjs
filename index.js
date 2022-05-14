@@ -26,7 +26,7 @@ for (const file of commandFiles) {
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
 	console.log('Ready!');
-	global.lul = Array();
+	global.rolls = Array();
 });
 
 client.on('interactionCreate', async interaction => {

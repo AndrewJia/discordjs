@@ -29,8 +29,8 @@ module.exports = {
         arr.sort();
 
         //stores username and rolls
-        global.lul.push(interaction.user.tag);
-        global.lul.push(arr);
+        global.rolls.push(interaction.user.tag);
+        global.rolls.push(arr);
 
         await interaction.user.send("Rolling "+amount+" dice\n"+arr.toString());
         await interaction.reply("done");
