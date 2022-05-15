@@ -4,6 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('liar')
 		.setDescription('call the last player a liar!'),
+        
 	async execute(interaction) {
         //total dice count
         count = [0, 0, 0, 0, 0, 0];

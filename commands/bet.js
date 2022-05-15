@@ -16,6 +16,7 @@ module.exports = {
                 .setDescription('Value of the bet')
                 .setRequired(true)
         ),
+        
 	async execute(interaction) {
         value = interaction.options.getInteger('value');
         count = interaction.options.getInteger('count');

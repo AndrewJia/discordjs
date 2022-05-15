@@ -12,7 +12,9 @@ module.exports = {
         .addBooleanOption(option =>
             option
                 .setName('joingame')
-                .setDescription('Join liar\'s dice game?')),
+                .setDescription('Join liar\'s dice game?')
+        ),
+        
 	async execute(interaction) {
 
         // rolls given number of dice or default = 5

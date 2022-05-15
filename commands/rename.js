@@ -10,6 +10,7 @@ module.exports = {
                 .setDescription('new name of the bot')
                 .setRequired(true)
         ),
+        
 	async execute(interaction, client) {
         newname = interaction.options.getString('name');
         await client.user.setUsername(newname);
